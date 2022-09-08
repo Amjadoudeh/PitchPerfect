@@ -43,11 +43,15 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.topItem?.title = "Pitch Perfect"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        setupNavTitle()
         stopRecordingButton.isEnabled = false
     }
     
+    func setupNavTitle() {
+        navigationController?.navigationBar.topItem?.title = "Pitch Perfect"
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+    }
     // MARK: - Audio Recorder Delegate
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
