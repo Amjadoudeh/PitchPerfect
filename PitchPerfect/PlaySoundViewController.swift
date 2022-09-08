@@ -23,7 +23,7 @@ class PlaySoundViewController: UIViewController {
     @IBOutlet weak var reverbButton: UIButton!
     
     @IBOutlet weak var stopButton: UIButton!
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,33 +33,35 @@ class PlaySoundViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureUI(.notPlaying)
+        
     }
     
     // MARK: Actions
     
     @IBAction func playSoundForButton(_ sender: UIButton) {
+        stopButton.isEnabled = true
         print("Play Sound Button Pressed")
         switch(ButtonType(rawValue: sender.tag)!) {
-            case .slow:
-                playSound(rate: 0.5)
-            case .fast:
-                playSound(rate: 1.5)
-            case .chipmunk:
-                playSound(pitch: 1000)
-            case .vader:
-                playSound(pitch: -1000)
-            case .echo:
-                playSound(echo: true)
-            case .reverb:
-                playSound(reverb: true)
-            }
-
-            configureUI(.playing)
+        case .slow:
+            playSound(rate: 0.5)
+        case .fast:
+            playSound(rate: 1.5)
+        case .chipmunk:
+            playSound(pitch: 1000)
+        case .vader:
+            playSound(pitch: -1000)
+        case .echo:
+            playSound(echo: true)
+        case .reverb:
+            playSound(reverb: true)
+        }
+        
+        configureUI(.playing)
     }
     
     @IBAction func stopButtonPressed(_ sender: AnyObject) {
         print("Stop Audio Button Pressed")
         stopAudio()
     }
-    
 }
+

@@ -64,11 +64,11 @@
 				D0FA1F7528C893FB00851CC4 /* SceneDelegate.swift */,
 				D0FA1F7728C893FB00851CC4 /* RecordSoundViewController.swift */,
 				D0FA1F8728CA216E00851CC4 /* PlaySoundViewController.swift */,
+				D0FA1F8928CA4E3E00851CC4 /* PlaySoundViewController+Audio.swift */,
 				D0FA1F7928C893FB00851CC4 /* Main.storyboard */,
 				D0FA1F7C28C893FC00851CC4 /* Assets.xcassets */,
 				D0FA1F7E28C893FC00851CC4 /* LaunchScreen.storyboard */,
 				D0FA1F8128C893FC00851CC4 /* Info.plist */,
-				D0FA1F8928CA4E3E00851CC4 /* PlaySoundViewController+Audio.swift */,
 			);
 			path = PitchPerfect;
 			sourceTree = "<group>";
@@ -298,6 +298,7 @@
 				DEVELOPMENT_TEAM = P569KTXYRS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PitchPerfect/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "this app requiersthe access to microphone to record your vioce";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -327,6 +328,7 @@
 				DEVELOPMENT_TEAM = P569KTXYRS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PitchPerfect/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "this app requiersthe access to microphone to record your vioce";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
