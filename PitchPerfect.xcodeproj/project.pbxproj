@@ -15,6 +15,8 @@
 		D0FA1F8028C893FC00851CC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0FA1F7E28C893FC00851CC4 /* LaunchScreen.storyboard */; };
 		D0FA1F8828CA216E00851CC4 /* PlaySoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA1F8728CA216E00851CC4 /* PlaySoundViewController.swift */; };
 		D0FA1F8A28CA4E3E00851CC4 /* PlaySoundViewController+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FA1F8928CA4E3E00851CC4 /* PlaySoundViewController+Audio.swift */; };
+		D0FA1F8F28CB361C00851CC4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FA1F8E28CB361C00851CC4 /* StoreKit.framework */; };
+		D0FA1F9228CB38FC00851CC4 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = D0FA1F9128CB38FC00851CC4 /* GoogleMobileAds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,7 @@
 		D0FA1F8128C893FC00851CC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0FA1F8728CA216E00851CC4 /* PlaySoundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySoundViewController.swift; sourceTree = "<group>"; };
 		D0FA1F8928CA4E3E00851CC4 /* PlaySoundViewController+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaySoundViewController+Audio.swift"; sourceTree = "<group>"; };
+		D0FA1F8E28CB361C00851CC4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +38,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0FA1F9228CB38FC00851CC4 /* GoogleMobileAds in Frameworks */,
+				D0FA1F8F28CB361C00851CC4 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +51,7 @@
 			children = (
 				D0FA1F7228C893FB00851CC4 /* PitchPerfect */,
 				D0FA1F7128C893FB00851CC4 /* Products */,
+				D0FA1F8D28CB361C00851CC4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,15 +68,39 @@
 			children = (
 				D0FA1F7328C893FB00851CC4 /* AppDelegate.swift */,
 				D0FA1F7528C893FB00851CC4 /* SceneDelegate.swift */,
-				D0FA1F7728C893FB00851CC4 /* RecordSoundViewController.swift */,
-				D0FA1F8728CA216E00851CC4 /* PlaySoundViewController.swift */,
-				D0FA1F8928CA4E3E00851CC4 /* PlaySoundViewController+Audio.swift */,
+				D0FA1F8B28CB31C700851CC4 /* Views */,
+				D0FA1F8C28CB31DE00851CC4 /* Extensions */,
 				D0FA1F7928C893FB00851CC4 /* Main.storyboard */,
 				D0FA1F7C28C893FC00851CC4 /* Assets.xcassets */,
 				D0FA1F7E28C893FC00851CC4 /* LaunchScreen.storyboard */,
 				D0FA1F8128C893FC00851CC4 /* Info.plist */,
 			);
 			path = PitchPerfect;
+			sourceTree = "<group>";
+		};
+		D0FA1F8B28CB31C700851CC4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0FA1F7728C893FB00851CC4 /* RecordSoundViewController.swift */,
+				D0FA1F8728CA216E00851CC4 /* PlaySoundViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D0FA1F8C28CB31DE00851CC4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D0FA1F8928CA4E3E00851CC4 /* PlaySoundViewController+Audio.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D0FA1F8D28CB361C00851CC4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0FA1F8E28CB361C00851CC4 /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,6 +119,9 @@
 			dependencies = (
 			);
 			name = PitchPerfect;
+			packageProductDependencies = (
+				D0FA1F9128CB38FC00851CC4 /* GoogleMobileAds */,
+			);
 			productName = PitchPerfect;
 			productReference = D0FA1F7028C893FB00851CC4 /* PitchPerfect.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +150,9 @@
 				Base,
 			);
 			mainGroup = D0FA1F6728C893FB00851CC4;
+			packageReferences = (
+				D0FA1F9028CB38FC00851CC4 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			productRefGroup = D0FA1F7128C893FB00851CC4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -370,6 +406,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D0FA1F9028CB38FC00851CC4 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D0FA1F9128CB38FC00851CC4 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D0FA1F9028CB38FC00851CC4 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D0FA1F6828C893FB00851CC4 /* Project object */;
 }
