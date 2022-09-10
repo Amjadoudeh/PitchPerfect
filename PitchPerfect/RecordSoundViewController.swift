@@ -2,12 +2,12 @@ import UIKit
 import AVFoundation
 import GoogleMobileAds
 
-
+@IBDesignable
 class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate, GADBannerViewDelegate {
     
     var audioRecorder: AVAudioRecorder!
     var bannerView: GADBannerView!
-
+    
     @IBOutlet weak var recordingLabel: UILabel!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var stopRecordingButton: UIButton!
@@ -71,8 +71,8 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate, GADB
           [NSLayoutConstraint(item: bannerView,
                               attribute: .bottom,
                               relatedBy: .equal,
-                              toItem: bottomLayoutGuide,
-                              attribute: .top,
+                              toItem: view.safeAreaLayoutGuide,
+                              attribute: .bottom,
                               multiplier: 1,
                               constant: 0),
            NSLayoutConstraint(item: bannerView,
