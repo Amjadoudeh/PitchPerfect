@@ -1,12 +1,16 @@
 import UIKit
 import AVFoundation
+import GoogleMobileAds
 
-class PlaySoundViewController: UIViewController {
+
+class PlaySoundViewController: UIViewController, GADFullScreenContentDelegate {
     var recordedAudioURL: URL!
     var audioFile:AVAudioFile!
     var audioEngine:AVAudioEngine!
     var audioPlayerNode: AVAudioPlayerNode!
     var stopTimer: Timer!
+    
+    private var interstitial: GADInterstitialAd?
     
     enum ButtonType: Int {
         case slow = 0, fast, chipmunk, vader, echo, reverb
@@ -23,11 +27,36 @@ class PlaySoundViewController: UIViewController {
     @IBOutlet weak var reverbButton: UIButton!
     
     @IBOutlet weak var stopButton: UIButton!
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAudio()
+        
+        // Ads
+        loadAds()
+    }
+    
+    func loadAds() {
+        let request = GADRequest()
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
+                               request: request,
+                               completionHandler: { [self] ad, error in
+            if let error = error {
+                print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                return
+            }
+            interstitial = ad
+            interstitial?.fullScreenContentDelegate = self
+        }
+        )
+    }
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        loadAds()
+    }
+    
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        loadAds()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +68,7 @@ class PlaySoundViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func playSoundForButton(_ sender: UIButton) {
+        
         stopButton.isEnabled = true
         print("Play Sound Button Pressed")
         switch(ButtonType(rawValue: sender.tag)!) {
