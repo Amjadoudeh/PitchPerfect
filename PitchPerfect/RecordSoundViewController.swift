@@ -3,7 +3,7 @@ import AVFoundation
 import GoogleMobileAds
 
 @IBDesignable
-class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate, GADBannerViewDelegate {
+class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate {
     
     var audioRecorder: AVAudioRecorder!
     var bannerView: GADBannerView!
@@ -48,54 +48,16 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate, GADB
         super.viewDidLoad()
         setupNavTitle()
         stopRecordingButton.isEnabled = false
-        // bannerAds
-        bannerView = GADBannerView(adSize: GADAdSizeBanner)
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        bannerView.rootViewController = self
-        bannerView.load(GADRequest())
-        bannerView.delegate = self
+        createAds()
+        
     }
     
-    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
-        bannerView.alpha = 0
-          UIView.animate(withDuration: 1, animations: {
-            bannerView.alpha = 1
-          })
-      addBannerViewToView(bannerView)
-    }
-    
-    func addBannerViewToView(_ bannerView: GADBannerView) {
-        bannerView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(bannerView)
-        view.addConstraints(
-          [NSLayoutConstraint(item: bannerView,
-                              attribute: .bottom,
-                              relatedBy: .equal,
-                              toItem: view.safeAreaLayoutGuide,
-                              attribute: .bottom,
-                              multiplier: 1,
-                              constant: 0),
-           NSLayoutConstraint(item: bannerView,
-                              attribute: .centerX,
-                              relatedBy: .equal,
-                              toItem: view,
-                              attribute: .centerX,
-                              multiplier: 1,
-                              constant: 0)
-          ])
-       }
-    
-    func setupNavTitle() {
-        navigationController?.navigationBar.topItem?.title = "Pitch Perfect"
-        navigationController?.navigationBar.prefersLargeTitles = true
-
-    }
     // MARK: - Audio Recorder Delegate
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if flag {
-        print("finish recording")
-        performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
+            print("finish recording")
+            performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
         } else {
             print("Recording was not successful")
         }
@@ -111,3 +73,51 @@ class RecordSoundViewController: UIViewController, AVAudioRecorderDelegate, GADB
     
 }
 
+//MARK: VC Extension:
+
+extension RecordSoundViewController: GADBannerViewDelegate {
+    //MARK: Create Ads
+    func createAds() {
+        bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+    }
+    
+    func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        bannerView.alpha = 0
+        UIView.animate(withDuration: 1, animations: {
+            bannerView.alpha = 1
+        })
+        addBannerViewToView(bannerView)
+    }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+        bannerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(bannerView)
+        view.addConstraints(
+            [NSLayoutConstraint(item: bannerView,
+                                attribute: .bottom,
+                                relatedBy: .equal,
+                                toItem: view.safeAreaLayoutGuide,
+                                attribute: .bottom,
+                                multiplier: 1,
+                                constant: 0),
+             NSLayoutConstraint(item: bannerView,
+                                attribute: .centerX,
+                                relatedBy: .equal,
+                                toItem: view,
+                                attribute: .centerX,
+                                multiplier: 1,
+                                constant: 0)
+            ])
+    }
+    
+    //MARK: Nav Title
+    func setupNavTitle() {
+        navigationController?.navigationBar.topItem?.title = "Pitch Perfect"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+    }
+}

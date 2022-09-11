@@ -77,9 +77,9 @@ class PlaySoundViewController: UIViewController, GADFullScreenContentDelegate {
         case .fast:
             playSound(rate: 1.5)
         case .chipmunk:
-            playSound(pitch: 1000)
+            playSound(pitch: 1100)
         case .vader:
-            playSound(pitch: -1000)
+            playSound(pitch: -1100)
         case .echo:
             playSound(echo: true)
         case .reverb:
